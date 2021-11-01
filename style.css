@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+}
+
+html,
+body {
+  --gray: hsl(240, 9%, 89%);
+  --black: hsl(240, 6%, 13%);
+
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+body {
+  /*O display grid separa dois elementos em espécies de "caixinhas", ficando facilmente de ser visualizado na inspeção da página. Sem ele não conseguiriamos usar o "place-items" que deixa nossos elementos ao centro da página*/
+  display: grid;
+  place-items: center;
+}
+
+main {
+  background: url(./images/Mobile.svg);
+  width: 375px;
+  height: 812px;
+}
+
+.container {
+  max-width: 250px;
+  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.avatar {
+  width: 10rem;
+  margin: 11.5rem auto 0;
+
+  position: relative;
+}
+
+.avatar span {
+  position: absolute;
+  top: -15px;
+
+  /* o "z-index" faz referencia a profunidade de um objeto, neste caso, ao usarmos o "clip-path" o nosso avatar acabou cobrindo a logo, por este motivo, precisamos alterar a profunidade para que o logo volte a ficar encima do avatar.*/
+  z-index: 1;
+}
+
+/*usamos o ">" para falar ao CSS que queremos selecionar a class avatar com a tag img de no primeiro nível apenas.*/
+.avatar > img {
+  width: 10rem;
+  height: 11.5rem;
+
+  /*o "object-fit" serve para que, ao alterarmos o tamanho da imagem, possamos recuperar sua qualidade original.*/
+  object-fit: cover;
+
+  /*usamos o "clip-path" para dar forma a uma determinada imagem, nesse caso, forma de poligno. Daí buscamos no google por: "Clip CSS" e acessamos o site "bennettfeely.com/clippy/"
+  Desta maneira, conseguiremos as especificações corretar para colocarmos na nossa forma.*/
+
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+}
+h1 {
+  color: hsl(240, 9%, 89%);
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+a {
+  color: var(--gray);
+  text-decoration: none;
+  margin-top: 0.25rem;
+
+  display: flex;
+  gap: 0.75rem;
+
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  color: var(--gray);
+  margin-top: 2rem;
+}
+
+ul {
+  list-style-type: none;
+  margin-top: 4rem;
+  padding: 0;
+
+  /* o "display:flex" faz com que os objetos fiquem alinhados horizontalmente e permite o uso do "gap" e do "justify-content"*/
+  display: flex;
+
+  /*o "gap" serve para que demos espaçamentos entre os itens da lista*/
+  gap: 0.5rem;
+  /*o justify-content: center" serve para centralizar os elementos da lista. Usamos ele nesse caso porque não tinhamos textos ou elementos de texto para usar o "text-align".*/
+  justify-content: center;
+}
+
+li {
+  padding: 3px;
+}
